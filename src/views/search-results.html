@@ -1,0 +1,69 @@
+{% extends "layout.html" %}
+
+{% set pageId = "page-search_results" %}
+
+{% block title %}
+    <title>Resultado da Pesquisa</title>
+{% endblock title %}
+
+{% block css %}
+    <link rel="stylesheet" href="css/search-results.css">
+{% endblock css %}
+
+{% block content %}
+    {% include "partials/page-header.html" %}
+
+    <main>
+
+        {% if total > 0 %}
+            <h3>
+                <strong>{{total}} pontos</strong>
+                ecnontrados
+            </h3>
+
+            <div class="cards">
+
+                {% for place in places %}
+                    <div class="card">
+                        <img src="{{place.image}}" alt="{{place.name}}">
+                        <h1>{{place.name}}</h1>
+                        <h3>{{place.items}}</h3>
+                        <p>
+                            {{place.city}}, {{place.state}}
+                            <br>
+                            {{place.address}}, {{place.address2}}
+                        </p>
+                    </div>
+                {% endfor %}
+            </div><!--cards-->
+        {%else%}
+            <h3><strong>Nenhum</strong> local encontrado</h3>
+        {% endif %}
+     
+    </main>
+
+{% endblock content %}
+
+<!--
+<div class="card">
+                <img src="https://images.unsplash.com/photo-1567093321629-c23611f44d52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Colectoria">
+                <h1>Colectoria</h1>
+                <h3>Resíduos Eletrônicos, Lâmpadas</h3>
+                <p>
+                    Belém, Pará
+                    <br>
+                    Gabriel Henriques, Marambaia N° 293
+                </p>
+            </div>
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1567393528677-d6adae7d4a0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80" alt="Colectoria">
+                <h1>Papersider</h1>
+                <h3>Papéis e Papelão</h3>
+                <p>
+                    Belém, Pará
+                    <br>
+                    Pedro Henrique, Médici N° 349
+                </p>
+            </div>
+ -->
